@@ -12,7 +12,7 @@ import com.techlab.tp_final.excepciones.StockInsuficienteException;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/pedido")
+@RequestMapping("/pedidos")
 @AllArgsConstructor
 public class PedidoController {
     private PedidoService service;

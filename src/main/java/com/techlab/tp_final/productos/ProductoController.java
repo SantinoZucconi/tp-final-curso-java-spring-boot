@@ -19,7 +19,7 @@ import com.techlab.tp_final.excepciones.ItemNotFoundException;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/producto")
+@RequestMapping("/productos")
 @AllArgsConstructor
 public class ProductoController {
 
