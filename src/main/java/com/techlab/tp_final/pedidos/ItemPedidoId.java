@@ -2,8 +2,6 @@ package com.techlab.tp_final.pedidos;
 
 import java.util.Objects;
 
-import com.techlab.tp_final.productos.Producto;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ItemPedidoId{
     private Long idPedido;
-    private Producto producto;
+    private Long idProducto;
 
     @Override
     public boolean equals(Object o) {
@@ -21,11 +19,11 @@ public class ItemPedidoId{
         if (o == null || getClass() != o.getClass()) return false;
         ItemPedidoId that = (ItemPedidoId) o;
         return Objects.equals(idPedido, that.idPedido) &&
-               Objects.equals(producto, that.producto);
+               Objects.equals(idProducto, that.idProducto);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idPedido, producto);
+        return Objects.hash(idPedido, idProducto);
     }
 }
