@@ -3,25 +3,30 @@ package com.techlab.tp_final.productos;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.techlab.tp_final.excepciones.ItemAlreadyExistsException;
 import com.techlab.tp_final.excepciones.ItemNotFoundException;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class ProductoService {
 
+    @Autowired
     private ProductoRepository repository;
 
     public Producto createProducto(ProductoSaveDTO productoDTO) throws ItemAlreadyExistsException{
-        if (repository.existsByName(productoDTO.nombre())){
+        if (repository.existsByNombre(productoDTO.nombre())){
             throw new ItemAlreadyExistsException("producto");
         }
         return repository.save(productoDTO.toProducto());
     }
 
     public Producto updateProducto(ProductoSaveDTO productoDTO) throws ItemNotFoundException{
-        if (!repository.existsByName(productoDTO.nombre())){
+        if (!repository.existsByNombre(productoDTO.nombre())){
             throw new ItemNotFoundException("producto");
         }
         return repository.save(productoDTO.toProducto());
@@ -44,5 +49,10 @@ public class ProductoService {
 
     public List<Producto> getProductos(){
         return repository.findAll();
+    }
+
+    public void takeStock(Producto producto, Integer cantidad) throws ItemNotFoundException {
+        producto.setCantidad(producto.getCantidad() - cantidad);
+        repository.save(producto);
     }
 }
