@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+prueba_producto.json
+prueba_pedido.json
